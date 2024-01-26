@@ -9,6 +9,8 @@ sentences. Make a commit at least after finishing each exercise, or
 better yet, more frequently. Push your work regularly to GitHub, and make sure 
 all checks pass.
 
+**Make sure all Python libraries used are in the `requirements.txt` file!**
+
 ---
 
 ## Part 1: Python Basics

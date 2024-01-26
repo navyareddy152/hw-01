@@ -27,7 +27,8 @@ jobs:
         wget -q -O quarto.deb https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.189/quarto-1.1.189-linux-amd64.deb
         dpkg -i quarto.deb
         python -m pip install --upgrade pip
-        pip install notebook
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
     - name: Check if .qmd file exists
       id: check_qmd
       run: |

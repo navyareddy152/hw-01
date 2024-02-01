@@ -9,7 +9,7 @@ jupyter: python3
 ---
 
 ## Import libraries
-## 1 - Python basics
+## 1 - P ython basics
 
 ### Task1: Variables and Types
 

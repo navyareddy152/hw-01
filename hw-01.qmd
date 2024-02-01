@@ -1,6 +1,6 @@
 ---
 title: "HW 01"
-author: "SAI NAVYA REDDY BUSIREDDY"
+author: "SAI NAVYA REDDY BUSIREDDY "
 format:
   html:
     embed-resources: true

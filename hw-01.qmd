@@ -1,6 +1,6 @@
 ---
 title: "HW 01"
-author: "INSERT YOUR NAME HERE"
+author: "SAI NAVYA REDDY BUSIREDDY"
 format:
   html:
     embed-resources: true
@@ -9,28 +9,190 @@ jupyter: python3
 ---
 
 ## Import libraries
-
-```{python}
-#| label: label-me-1
-```
-
 ## 1 - Python basics
 
-### Variables and Types
+### Task1: Variables and Types
 
 ```{python}
-#| label: label-me-2
+#TASK1
+age=25
+course="Data Mining"
+print(type(age))
+print(type(course)) 
+```
+
+## TASK2 Control Structures
+```{python}
+#TASK2
+num=15
+def is_prime(num):
+    if num < 2:
+        return False  # Numbers less than 2 are not prime
+    
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False  # If it has a divisor in this range, it's not prime
+    
+    return True  # If no divisors were found, it's prime
+
+result = is_prime(num)
+print(result)
+```
+
+### Data Structures
+### Task3
+```{python}
+#| label: label-me-3
+grades = {    #defining dictionary
+    "s1": "A",
+    "s2": "B",
+    "s3": "C",
+    "s4": "D",
+    "s5": "F"
+}
+
+for student, grade in grades.items():
+    print(f"Student {student} has Grade {grade}")
 
 ```
 
-### Control Stuctures
+## Task 4: List Comprehension & Functions
+```{python}
+#| label: label-me-3
+import statistics
+numtup=[(num,num**2) for num in range(1,11)]
+print(numtup)
+
+def calculate_stats(numbers):
+	mean=statistics.mean(numbers)
+	median=statistics.median(numbers)
+	standard_deviation=statistics.stdev(numbers)
+	return mean,median,standard_deviation
+numbers = [1, 2, 3, 4, 5, 6]
+result = calculate_stats(numbers)
+print(result)
+```
+
 
 ## 2 - NumPy Introduction
+# Task 1: NumPy Arrays
+```{python}
+#| label: label-me-3
+import numpy as np
+arr = np.arange(100).reshape(10,10)
+print(arr)
+result=np.linalg.det(arr)
+print(result)
+```
 
+# Task 2: Array Operations
+```{python}
+#| label: label-me-3
+import numpy as np
+arr1=np.random.rand(10)
+normalized_array=(arr1-np.min(arr1))/(np.max(arr1)-np.min(arr1))
+print(normalized_array)
+```
+## Task 3: tract and print all the elements from the third column of a given 2D NumPy array.
+```{python}
+#| label: label-me-3
+import numpy as np
+arr2=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+track=arr2[:,2]
+print(track)
+
+for i in track:
+    h = np.sqrt(i)
+    print(h)
+
+```
+## Task 4: Statistics with NumPy
+```{python}
+#| label: label-me-3
+import numpy as np
+x=np.array([[11,12,13],[14,15,16],[17,18,19]])
+print(x)
+
+
+#Along rows
+xmean=np.mean(x,axis=1)
+print(xmean)
+xmedian=np.median(x,axis=1)
+print(xmedian)
+xvar=np.var(x,axis=1)
+print(xvar)
+
+#Along columns
+cxmean=np.mean(x,axis=0)
+print(cxmean)
+cxmedian=np.median(x,axis=0)
+print(cxmedian)
+cxvar=np.var(x,axis=0)
+print(cxvar)
+
+#max variance
+max_var_rows_index=np.argmax(xvar)
+print(max_var_rows_index)
+max_var_row=x[max_var_rows_index,:]
+print(max_var_row)
+
+
+```
+## 3 - Pandas Introduction
+## Task 1: Series and DataFrame Basics
 ```{python}
 #| label: label-me-3
 
+import pandas as pd
+import numpy as np
+labels=list("abcdefghij")
+print(labels)
+values=np.random.randint(1,101,10)
+series=pd.Series(values,index=labels)
+print(series)
+df=series.to_frame(name="Random_Numbers")
+print(df)
+
+
 ```
+## Task 2: Data Importing and Inspection
+```{python}
+#| label: label-me-3
 
-## 3 - Pandas Introduction
+import pandas as pd
+import numpy as np
+data={
+    'id':[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    'name':['Ayesha','Bunny','Carol','Devi','Esha','Fathima','Gouri','Hima','Ima','James','Kavya','Lisa','Meena','Navi','Om'],
+    'score':[90,60,80,"NA",100,94,91,"NA",84,77,78,"NA",48,100,12]
+}
+df1=pd.DataFrame(data)
+df1.to_csv('solution.csv',index=False)
+df2=pd.read_csv('solution.csv')
+print("Column Datatype is")
+print(df2.dtypes)
+print("First 10 rows of the dataframe are")
+print(df2.head(10))
 
+
+
+
+## Task 3: Data Manipulation and Cleaning
+median_of_score=df2['score'].median()
+df2['score'].fillna(median_of_score,inplace=True)
+
+df2['normalized_score']=(df2['score']-df2['score'].mean())/df2['score'].std()
+print(df2)
+## Task 4: Data Aggregation and Grouping
+group=df2.groupby('name')['score'].mean().reset_index()
+df_new=pd.DataFrame({
+    'name':group['name'],
+    'average_score':group['score']
+})
+print(df_new)
+df_new=df_new.sort_values(by='average_score',ascending=False)
+print("New Dataframe with names and average score is:")
+print(df_new)
+
+
+```

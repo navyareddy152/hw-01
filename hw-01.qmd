@@ -85,7 +85,7 @@ result=np.linalg.det(arr)
 print(result)
 ```
 
-# Task 2: Array Operations
+# Task 2: Array  Operations
 ```{python}
 #| label: label-me-3
 import numpy as np

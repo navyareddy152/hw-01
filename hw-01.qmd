@@ -23,7 +23,7 @@ print(type(course))
 
 ## TASK2 Control Structures
 ```{python}
-#TASK2
+#TASK2 
 num=15
 def is_prime(num):
     if num < 2:
